@@ -37,6 +37,15 @@
             background: url('cactus.png') no-repeat center;
             background-size: contain;
         }
+        .background-object {
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            bottom: 20px;
+            left: 400px;
+            background: url('tent01.jpg') no-repeat center;
+            background-size: contain;
+        }
     </style>
 </head>
 <body>
@@ -45,10 +54,12 @@
     <div class="game-container">
         <div class="dino" id="dino"></div>
         <div class="obstacle" id="obstacle"></div>
+        <div class="background-object" id="background"></div>
     </div>
     <script>
         let dino = document.getElementById("dino");
         let obstacle = document.getElementById("obstacle");
+        let background = document.getElementById("background");
         let isJumping = false;
 
         document.addEventListener("keydown", function(event) {
@@ -95,3 +106,4 @@
     </script>
 </body>
 </html>
+
