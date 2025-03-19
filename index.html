@@ -42,7 +42,7 @@
             height: 60px;
             position: absolute;
             bottom: 20px;
-            left: 400px;
+            left: 600px;
             background: url('tent01.jpg') no-repeat center;
             background-size: contain;
         }
@@ -103,7 +103,18 @@
             }, 20);
         }
         moveObstacle();
+
+        function moveBackground() {
+            let backgroundPosition = 600;
+            let backgroundTimer = setInterval(() => {
+                if (backgroundPosition <= -60) {
+                    backgroundPosition = 800 + Math.random() * 400; // Randomize reappearance
+                }
+                backgroundPosition -= 2; // Moves slower than the obstacle
+                background.style.left = backgroundPosition + "px";
+            }, 30);
+        }
+        moveBackground();
     </script>
 </body>
 </html>
-
