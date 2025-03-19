@@ -1,10 +1,64 @@
-.background-object {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinosaur Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: white;
+            overflow: hidden;
+        }
+        .game-container {
+            position: relative;
+            width: 600px;
+            height: 200px;
+            border: 2px solid black;
+            margin: auto;
+            overflow: hidden;
+            background-color: #f7f7f7;
+        }
+        .dino {
+            width: 50px;
+            height: 50px;
             position: absolute;
-            z-index: -1;
+            bottom: 0;
+            left: 50px;
+            background: url('dino.webp') no-repeat center;
+            background-size: contain;
+        }
+        .obstacle {
+            width: 30px;
+            height: 50px;
+            position: absolute;
+            bottom: 0;
+            left: 600px;
+            background: url('cactus.png') no-repeat center;
+            background-size: contain;
+        }
+        .background-object {
+            width: 120px;
+            height: 120px;
+            position: absolute;
             bottom: 10px;
             left: 600px;
             background: url('tent01.png') no-repeat center;
             background-size: contain;
+            z-index: -1;
+        }
+        .rolling-background {
+            position: absolute;
+            width: 2000px;
+            height: 200px;
+            background: url('background.png') repeat-x;
+            background-size: cover;
+            animation: scrollBackground 10s linear infinite;
+        }
+        @keyframes scrollBackground {
+            from { transform: translateX(0); }
+            to { transform: translateX(-1000px); }
         }
     </style>
 </head>
@@ -12,6 +66,7 @@
     <h1>Dinosaur Game</h1>
     <p>Press SPACE to jump</p>
     <div class="game-container">
+        <div class="rolling-background"></div>
         <div class="dino" id="dino"></div>
         <div class="obstacle" id="obstacle"></div>
         <div class="background-object" id="background"></div>
@@ -63,18 +118,6 @@
             }, 20);
         }
         moveObstacle();
-
-        function moveBackground() {
-            let backgroundPosition = 600;
-            let backgroundTimer = setInterval(() => {
-                if (backgroundPosition <= -60) {
-                    backgroundPosition = 800 + Math.random() * 400; // Randomize reappearance
-                }
-                backgroundPosition -= 2; // Moves slower than the obstacle
-                background.style.left = backgroundPosition + "px";
-            }, 30);
-        }
-        moveBackground();
     </script>
 </body>
 </html>
